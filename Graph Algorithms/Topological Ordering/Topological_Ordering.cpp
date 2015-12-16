@@ -6,15 +6,15 @@
 using namespace std;
 
 const int n = 7;								//Total Number of (Nodes+1).
-												//node 0 is ignored to avoid confusion.
+										//node 0 is ignored to avoid confusion.
 class Graph
 {
 	public:
-	vector<list<int> > node;					//Adjacency List To Store A Graph (call it G1).
-	bool nodeExplored[n-1] = {false};			//Intialize All Nodes To Be Unexplored.
+	vector<list<int> > node;						//Adjacency List To Store A Graph (call it G1).
+	bool nodeExplored[n-1] = {false};					//Intialize All Nodes To Be Unexplored.
 	int fTime[n-1];								//To Keep Track of Finishing Time.
 	
-	Graph();									//Constructor.
+	Graph();								//Constructor.
 	void AdjList();								//Store Graph from '.txt' to G1.
 	void Print();								//Print The Finishing Times.
 	
@@ -39,9 +39,9 @@ void Graph :: AdjList()
 			istringstream iss(line);
 			while ((iss >> a))
 			{
-				if(i!=a)						//This done to skip the First Number in the Line
+				if(i!=a)					//This done to skip the First Number in the Line
 				{
-				node[i].push_back(a); 			//Add Edges To Node 'i'.
+				node[i].push_back(a); 				//Add Edges To Node 'i'.
 				}
 			}
 			i++;
@@ -49,7 +49,7 @@ void Graph :: AdjList()
 		
 	file.close();	
 	
-	for(int i=1;i<n;i++)						//To Print Out The Graph.
+	for(int i=1;i<n;i++)							//To Print Out The Graph.
 	{
 		cout<<i<<" - ";
 		
@@ -64,7 +64,7 @@ void Graph :: AdjList()
 	cout<<endl;
 }
 
-void Graph :: Print()					   		 //To Print The Finishing Times.
+void Graph :: Print()					   		 	//To Print The Finishing Times.
 {
 	for(int i=1;i<n;i++)
 	{
@@ -74,27 +74,27 @@ void Graph :: Print()					   		 //To Print The Finishing Times.
 
 
 int label = n-1;						  		 //To Keep Track For Ordering.
-void DFS(Graph & g, int s);				   	     //Prototype for DFS Function.
+void DFS(Graph & g, int s);				   	     		 //Prototype for DFS Function.
 
 void DFSLoop(Graph & g)					   
 {
 	
 	for (int i=1;i<n;i++)
 	{
-		if(g.nodeExplored[i] == false)			//Check If Node 'i' Is Not Yet Explored.
-		DFS(g,i);								//Call DFS Function.
+		if(g.nodeExplored[i] == false)					//Check If Node 'i' Is Not Yet Explored.
+		DFS(g,i);							//Call DFS Function.
 	}
 }
 
 void DFS(Graph & g, int s)
 {
-	g.nodeExplored[s] = true;					//Mark Node 's( = i)' As Marked.
+	g.nodeExplored[s] = true;						//Mark Node 's( = i)' As Marked.
 	
-	list<int> :: iterator iter;					//Initialize Iterator.
+	list<int> :: iterator iter;						//Initialize Iterator.
 	
 	for(iter = g.node[s].begin(); iter!=g.node[s].end();iter++)
 	{
-		if(g.nodeExplored[*iter] == false)		//To check If The Node Stored In 'iter' Is Explored.
+		if(g.nodeExplored[*iter] == false)				//To check If The Node Stored In 'iter' Is Explored.
 		{
 			DFS(g,*iter);
 		}
