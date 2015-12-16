@@ -5,9 +5,9 @@
 #include <sstream>
 using namespace std;
 
-const int n = 201;										//Number of (Nodes+1).
+const int n = 201;								//Number of (Nodes+1).
 
-typedef std::pair <int, int> IntPair;					//Pair<Node,EdgeWeight>
+typedef std::pair <int, int> IntPair;						//Pair<Node,EdgeWeight>
 vector<list<IntPair> > node(n);							//Edge(v -> w) Pair<w,weight(v,w)>
 
 class Graph
@@ -17,17 +17,17 @@ class Graph
 		bool nodeExplored[n] = {false};					//To check if Node is Explored.
 		
 		
-		Graph();										//Constructor.
-		void AdjList();									//To Construct Graph G1.
-		int MinIndex();									//Find Index with Min Dijkstra's Score(D.S).
-		void Dijkstra(int src);							//Dijkstra's Function().
+		Graph();							//Constructor.
+		void AdjList();							//To Construct Graph G1.
+		int MinIndex();							//Find Index with Min Dijkstra's Score(D.S).
+		void Dijkstra(int src);						//Dijkstra's Function().
 };
 
 Graph :: Graph()
 {
 	for (int i=0;i<n;i++)
 	{
-		dist[i]=1000000;								// Intialize all D.S to 1000000.
+		dist[i]=1000000;						// Intialize all D.S to 1000000.
 	}
 }
 
@@ -39,7 +39,7 @@ void Graph :: AdjList()
     file.open("D2.txt");
     string line;
     
-	while (getline(file, line))							// Take Input From The File.
+	while (getline(file, line))						// Take Input From The File.
 		{
 			istringstream iss(line);
 			char seperator;
@@ -55,49 +55,49 @@ void Graph :: AdjList()
 
 int Graph :: MinIndex()
 {
-	int minIndex;										//To Store Index with Min Dijkstra's Score(D.S).
+	int minIndex;								//To Store Index with Min Dijkstra's Score(D.S).
 	
 	unsigned long minDist = 1000000;					// To Store Min D.S.
 	
 	for(int i=1;i<n;i++)
 	{
-		if(nodeExplored[i] == false && dist[i]<minDist)	//Check If Node Explored and
-		{												//If it's D.S < Minimum D.S.
+		if(nodeExplored[i] == false && dist[i]<minDist)			//Check If Node Explored and
+		{								//If it's D.S < Minimum D.S.
 			
-			minDist = dist[i];							// If Yes ,Update Min D.S.
-			minIndex = i;								//Update Index.
+			minDist = dist[i];					// If Yes ,Update Min D.S.
+			minIndex = i;						//Update Index.
 			
 		}
 	}
 	
-	return minIndex;									//Returns Index with Min D.S.
+	return minIndex;							//Returns Index with Min D.S.
 }
 
 void Graph :: Dijkstra(int src)							//src = Source Vertex.
 {
-	dist[src]=0;										//EdgeWeight of Source = 0.
+	dist[src]=0;								//EdgeWeight of Source = 0.
 	
 	list<IntPair> :: iterator iter;						//Initialize Iterator.
 	
 	for(int i=1;i<n-1;i++)
 	{
-			int u = MinIndex();							//Stores The Index with Min D.S.
+			int u = MinIndex();					//Stores The Index with Min D.S.
 			
-			nodeExplored[u] = true;						//Mark Node 'u' Explored.
+			nodeExplored[u] = true;					//Mark Node 'u' Explored.
 			
 			for(iter = node[u].begin(); iter!= node[u].end();iter++)
 			{
 				
-				int v = iter->first;					// Points to Node Connected to Node 'u'.
+				int v = iter->first;				// Points to Node Connected to Node 'u'.
 				
-				unsigned long int edge = iter->second;	// Stores it's Edge Weight(EW).
+				unsigned long int edge = iter->second;		// Stores it's Edge Weight(EW).
 				
 				 if(nodeExplored[v] == false && dist[u]!=1000000 && (dist[u]+edge)<dist[v])
-				 {										//Check if Node 'v' is explored.
-				 										//Check if Node 'u' is Isolated. 
-				 										//Check if EW + D.S(u) < D.S(v).
+				 {						//Check if Node 'v' is explored.
+				 						//Check if Node 'u' is Isolated. 
+				 						//Check if EW + D.S(u) < D.S(v).
 				 										
-			 		dist[v] = dist[u] + edge;			//If Yes, Update D.S of Node 'v'.
+			 		dist[v] = dist[u] + edge;		//If Yes, Update D.S of Node 'v'.
 			 		
 			 	 }
 			 	 
@@ -113,8 +113,8 @@ void Graph :: Dijkstra(int src)							//src = Source Vertex.
 
 int main()
 {
-	Graph g;											//Initialize Object of Class Graph.
-	g.AdjList();										//Construct The Graph.
-	g.Dijkstra(1);										//Start Dijkstra's Algo with Node 1.
+	Graph g;								//Initialize Object of Class Graph.
+	g.AdjList();								//Construct The Graph.
+	g.Dijkstra(1);								//Start Dijkstra's Algo with Node 1.
 	return 0;
 }
