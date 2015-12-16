@@ -8,13 +8,13 @@
 using namespace std;
 
 const int n=201;   					//Total Number of (Nodes+1).
-vector<list<int> > ogNode(n);		//Reference Graph.
+vector<list<int> > ogNode(n);				//Reference Graph.
 
 
 //Fast Random Number Generator.
 
 static unsigned long x=123456789, y=362436069, z=521288629;
-unsigned long xorshf96(void) {          //period 2^96-1
+unsigned long xorshf96(void) {          		//period 2^96-1
 unsigned long t;
     x ^= x << 16;
     x ^= x >> 5;
@@ -36,21 +36,21 @@ class Graph
 		public:
 		vector<list<int> > node;  		//Adjaceny List To Store a Graph( Call It G1).
 		bool nodeTrue[n]={false};		//To check If The Node Exsist Anymore.
-		int nodeCount ;					//To Keep Track Of Total Number of Nodes.
+		int nodeCount ;				//To Keep Track Of Total Number of Nodes.
 		
-		Graph();						//Constructor.
+		Graph();				//Constructor.
 		void Merge(int a, int b);		//Merge Function(node a , node b).
-		void Print();					//Print The Graph.
+		void Print();				//Print The Graph.
 		int MinCutCount(int a);			//To Count The Minimum Number Of Cuts.
 };
 
 Graph :: Graph()
 {
-	node = ogNode;						//Contents of Reference Graph copied in G1.
-	nodeCount = n-1;					//NodeCount = Total number of Nodes. 
+	node = ogNode;					//Contents of Reference Graph copied in G1.
+	nodeCount = n-1;				//NodeCount = Total number of Nodes. 
 	
 	for(int i=1;i<n;i++)
-	nodeTrue[i] = true;					//Initializing all nodes (1 to (n-1)) = true.
+	nodeTrue[i] = true;				//Initializing all nodes (1 to (n-1)) = true.
 	
 }
 void Graph :: Merge(int a, int b)
@@ -60,7 +60,7 @@ void Graph :: Merge(int a, int b)
 	iter = node[a].end();				//Point the iterator to the end of node a.
 					
 					
-	node[a].splice(iter,node[b]);		//Cut & Paste Elements from b to a.
+	node[a].splice(iter,node[b]);			//Cut & Paste Elements from b to a.
 	
 	
 	nodeTrue[b] = false;				//Disabling Node b.
@@ -70,7 +70,7 @@ void Graph :: Merge(int a, int b)
 	
 	for( int i =1;i<n;i++)				// Assigning 'b=a' in the Remaining list.
 	{
-		if(nodeTrue[i])					//If The Given Node Exsists.
+		if(nodeTrue[i])				//If The Given Node Exsists.
 		{
 			while(true)
 			{
@@ -79,14 +79,14 @@ void Graph :: Merge(int a, int b)
 				if(iter2==node[i].end()) // If 'b' Not Found , Then Break.
 				break;
 				
-				*iter2 = a; 			//Else b = a.
+				*iter2 = a; 		//Else b = a.
 			}
 		
 		}
 	}
 	
 	
-	while(true)							//Removing Multiple Self Loops going from 'a' to 'a'.
+	while(true)					//Removing Multiple Self Loops going from 'a' to 'a'.
 	{
 		iter = find(node[a].begin(),node[a].end(),a);
 		
@@ -96,7 +96,7 @@ void Graph :: Merge(int a, int b)
 		node[a].erase(iter);			//Else Delete 'a' From Node 'a'.
 	}	
 	
-	nodeCount--;						// Decrement The Number Of Nodes.
+	nodeCount--;					// Decrement The Number Of Nodes.
 }
 
 
@@ -111,7 +111,7 @@ void  Graph::Print()
 		cout<<"Node "<<i<<" - ";
 		for( iter = node[i].begin();iter!=node[i].end();iter++)
 		{
-			cout<<*iter<<" ";		    //Print The Contents In Node 'i'.
+			cout<<*iter<<" ";		//Print The Contents In Node 'i'.
 		}
 		cout<<endl;
 		}
@@ -124,8 +124,8 @@ int Graph :: MinCutCount(int a)
 	
 	list<int>:: iterator iter = node[a].begin(); //Intialize Iterator 
 	
-	for(;iter!=node[a].end();iter++)	//Count Remaining Contents in node 'a'
-    		temp++;						//Which is Equal to Min Cut Of G1.
+	for(;iter!=node[a].end();iter++)	     //Count Remaining Contents in node 'a'
+    		temp++;				     //Which is Equal to Min Cut Of G1.
     
     return temp;
 }
@@ -143,7 +143,7 @@ void AdjList()
 			istringstream iss(line);
 			while ((iss >> a))
 			{
-				if(i!=a)				//This done to skip the First Number in the Line
+				if(i!=a)		//This done to skip the First Number in the Line
 				{
 				ogNode[i].push_back(a); //Add contents in Reference Graph.
 				}
@@ -158,47 +158,47 @@ void AdjList()
 
 int main()
 {
-	int a,b;								//Nodes 'a' and 'b'.
-	int min=n;								//To Store Final Min Cut.
-	int m=20;								// Number of Iterations.
+	int a,b;					//Nodes 'a' and 'b'.
+	int min=n;					//To Store Final Min Cut.
+	int m=20;					// Number of Iterations.
 	
 	
-	AdjList();  							// Store Graph from '.txt' to Reference Graph.
+	AdjList();  					// Store Graph from '.txt' to Reference Graph.
 
 
-	for(int j=1;j<=m;j++)					//Iterate 'm' Number Of Times To Get 
-	{										//Total Number of Minimum Cuts.
+	for(int j=1;j<=m;j++)				//Iterate 'm' Number Of Times To Get 
+	{						//Total Number of Minimum Cuts.
 		cout<<"Iteration - "<<j<<"\n\n";
 	
 		Graph g1;
 	
-		while(g1.nodeCount>2)				//Loop Till 2 Nodes are Left.
+		while(g1.nodeCount>2)			//Loop Till 2 Nodes are Left.
 		{
 		
 		
-			xorshf96();						//Generate Random Numbers.
-			a = z%n;						//Srand() is not used as it is very slow to
-											//generate random numbers at quick sucessions
+			xorshf96();			//Generate Random Numbers.
+			a = z%n;			//Srand() is not used as it is very slow to
+							//generate random numbers at quick sucessions
 
 	
 		//Picking Random Edges.
 		
-			if(g1.nodeTrue[a]==true)		//Checks if Node 'a' Exsists.
+			if(g1.nodeTrue[a]==true)	//Checks if Node 'a' Exsists.
 			{
 				list<int> :: iterator iter = g1.node[a].begin();
 				
-				b = *iter;					//Assigns b equal to the first content of node a.
+				b = *iter;		//Assigns b equal to the first content of node a.
 				
 				cout<<"Merging -"<<a<<" & "<<b<<endl;
 				
-				g1.Merge(a,b);				//Merge node 'a' and 'b'.
-				g1.Print();					//Prints The Graph.
+				g1.Merge(a,b);		//Merge node 'a' and 'b'.
+				g1.Print();		//Prints The Graph.
 				
 				cout<<endl;
 			}
     	}
     
-    	int temp = g1.MinCutCount(a);		//Stores The Minimum Number Of Cuts of G1.
+    	int temp = g1.MinCutCount(a);		   	//Stores The Minimum Number Of Cuts of G1.
     
     	cout<<"Temp Min Cut Value - "<<temp<<"\n\n";
     	
