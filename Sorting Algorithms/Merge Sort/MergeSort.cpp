@@ -19,6 +19,7 @@ void merge_sort(int *a,int low,int high)
     
     return;
 }
+
 void merge(int *a,int low,int mid,int high)
 {
 	int i=low;
