@@ -44,7 +44,7 @@ void Graph :: AdjList()
 			{
 				if(i!=a)						//This done to skip the First Number in the Line
 				{
-					Node[i].push_back(a); 	//Add contents in G1.
+					Node[i].push_back(a); 				//Add contents in G1.
 				}
 			}
 			i++;
