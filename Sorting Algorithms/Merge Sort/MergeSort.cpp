@@ -9,12 +9,13 @@ void merge(int *a,int low,int mid,int high);
 void merge_sort(int *a,int low,int high)
 {
 	int mid =(high+low)/2;
+	
 	if(low<high)
 	{
-	merge_sort(a,low,mid);
-	merge_sort(a,mid+1,high);
-	merge(a,low,mid,high);
-    }
+		merge_sort(a,low,mid);
+		merge_sort(a,mid+1,high);
+		merge(a,low,mid,high);
+	}
     
     return;
 }
@@ -24,14 +25,17 @@ void merge(int *a,int low,int mid,int high)
 	int j=mid+1;
 	int k=low;
 	int c[n];
+	
 	while(i<=mid&&j<=high)
 	{
+		
 		if(a[i]<a[j])
 		{
 			c[k]=a[i];
 			k++;
 			i++;
 		}
+		
 		else
 		{
 			c[k]=a[j];
@@ -39,18 +43,21 @@ void merge(int *a,int low,int mid,int high)
 			j++;
 		}
 	}
+	
 	while(i<=mid)
 	{
 		c[k]=a[i];
 		k++;
 		i++;
 	}
+	
 	while(j<=high)
 	{
 		c[k]=a[j];
 		k++;
 		j++;
 	}
+	
 	for(i=low;i<k;i++)
 	{
 		a[i]=c[i];
