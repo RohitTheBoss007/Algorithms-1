@@ -13,7 +13,7 @@ vector<list<IntPair> > node(n);							//Edge(v -> w) Pair<w,weight(v,w)>
 class Graph
 {
 	public :
-		unsigned long long int dist[n];					//To Store Edge Weight.
+		unsigned long long int dist[n];					//To Store Dijkstra's Score of each node.
 		bool nodeExplored[n] = {false};					//To check if Node is Explored.
 		
 		
