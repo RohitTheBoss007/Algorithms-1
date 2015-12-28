@@ -1,4 +1,4 @@
-		//Running Time Of O(mn).
+		//Running Time Of O(mn) using Brute Force.
 
 #include <iostream>
 #include <vector>
@@ -9,7 +9,7 @@ using namespace std;
 
 const int n = 201;								//Number of (Nodes+1).
 
-typedef std::pair <int, int> IntPair;						//Pair<Node,EdgeWeight>
+typedef std::pair <int, int> IntPair;						//Pair<Node,Dijkstra Score>
 vector<list<IntPair> > node(n);							//Edge(v -> w) Pair<w,weight(v,w)>
 
 class Graph
