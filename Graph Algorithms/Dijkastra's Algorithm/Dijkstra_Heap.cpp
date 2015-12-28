@@ -52,8 +52,8 @@ void Graph::AdjList ()
 	int a,b,i=1;
 	
 	ifstream file;
-    file.open("D2.txt");
-    string line;
+    	file.open("D2.txt");
+	  string line;
     
 	while (getline(file, line))								// Take Input From The File.
 		{
