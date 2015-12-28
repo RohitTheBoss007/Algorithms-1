@@ -29,7 +29,7 @@ class Graph
 	public :
 	
 		bool NodeExplored[n];								//To check if Node is Explored.
-		unsigned long long int Dscore[n];						//To Store Edge Weight.
+		unsigned long long int Dscore[n];						//To Store Dijkstra Score(D.S).
 		
 		Graph();									//Constructor.
 		void AdjList();									//To Construct Graph G1.
