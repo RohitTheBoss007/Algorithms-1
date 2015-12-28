@@ -1,4 +1,4 @@
-	//Running Time of O(mlogn).
+	//Running Time of O(mlogn) using Priority Queue.
 
 #include<iostream>
 #include<queue>
@@ -12,7 +12,7 @@ using namespace std;
 
 const int n=201;										//Number of (Nodes+1).
 
-typedef std::pair <int, unsigned long long int> IntPair;					//Pair<Node,EdgeWeight>
+typedef std::pair <int, unsigned long long int> IntPair;					//Pair <Node,Dijkstra Score>
 
 struct Compare											//To Compare The Dijkstra Score(D.S)
 {												//Of Two Nodes.
