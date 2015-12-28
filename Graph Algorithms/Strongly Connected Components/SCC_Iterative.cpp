@@ -194,7 +194,7 @@ void DFS(Graph & g, int s)						//Iterative Depth First Search.
 		
 		if(g.SecondPass == true)				//DFS On G.
 		{
-				for(iter = node[u].begin(); iter!= node[u].end();iter++)
+			for(iter = node[u].begin(); iter!= node[u].end();iter++)
 			{
 				if(g.nodeExplored[*iter] == false)	//Same As Above.
 				{
