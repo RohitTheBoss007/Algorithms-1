@@ -42,7 +42,6 @@ class Graph
 	{
 		
 		Dscore[i] = 1000000;								// Intialize all D.S to 1000000.
-		Heap.push(make_pair(i,Dscore[i]));						//Insert the Pair - (Key = D.S,Value = vertex)
 		NodeExplored[i] = false;							//Mark all Nodes Unexplored.
 		
 	}
