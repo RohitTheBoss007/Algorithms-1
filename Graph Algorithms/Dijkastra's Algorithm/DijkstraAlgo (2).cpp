@@ -1,3 +1,5 @@
+		//Running Time Of O(mn).
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -75,7 +77,7 @@ int Graph :: MinIndex()
 
 void Graph :: Dijkstra(int src)							//src = Source Vertex.
 {
-	dist[src]=0;								//EdgeWeight of Source = 0.
+	dist[src]=0;								//D.S of Source = 0.
 	
 	list<IntPair> :: iterator iter;						//Initialize Iterator.
 	
