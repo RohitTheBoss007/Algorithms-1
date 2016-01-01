@@ -1,3 +1,5 @@
+		//Running Time mlog(n) using Priority Queue.
+
 #include<iostream>
 #include<vector>
 #include<list>
@@ -73,8 +75,8 @@ void Graph:: AdjList()
 		int a,b,i=1;
 	
 	ifstream file;
-    file.open("Prim_Test.txt");
-    string line;
+        file.open("Prim_Test.txt");
+        string line;
     
 	while (getline(file, line))						        	// Take Input From The File.
 		{
