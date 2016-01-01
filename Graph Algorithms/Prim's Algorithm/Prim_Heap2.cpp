@@ -72,7 +72,7 @@ Graph:: Graph()
 
 void Graph:: AdjList()
 {
-		int a,b,i=1;
+	int a,b,i=1;
 	
 	ifstream file;
         file.open("Prim_Test.txt");
