@@ -117,7 +117,7 @@ void Graph::HeapInsert(const int & cv)
 				 								//Check if Node 'cv' is Isolated. 
 				 								//Check if ew < cost[dv].
 				 										
-				cost[dv] = dc;							//If Yes, Update D.S of Node 'dv'.
+				cost[dv] = dc;							//If Yes, Update cost of Node 'dv'.
 				Heap.push(Node(dv,cost[dv],cv));	                	//Reinsert The Pair with Updated Key.		
 			}
 		}
