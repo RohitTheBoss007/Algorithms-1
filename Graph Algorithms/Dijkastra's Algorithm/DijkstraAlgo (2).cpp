@@ -59,7 +59,7 @@ int Graph :: MinIndex()
 {
 	int minIndex;								//To Store Index with Min Dijkstra's Score(D.S).
 	
-	unsigned long minDist = 1000000;					// To Store Min D.S.
+	unsigned long minDist = 1000000;						// To Store Min D.S.
 	
 	for(int i=1;i<n;i++)
 	{
